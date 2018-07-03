@@ -9,7 +9,6 @@ typedef struct
     uint16_t reg_address;
     uint8_t struct_size;
     void* pDataStruct;
-
 }mbMap_st;
 
 extern CoeffT tankThermister, probe;
@@ -24,6 +23,12 @@ extern const mbMap_st mbMap[];
 extern const uint16_t mbMap_size;
 
 
-extern CoeffT* Coeff_getObj(uint16_t reg_address);
+extern void* mbMap_getObj(const mbMap_st* p_map, uint16_t index);
+extern uint16_t mbMap_getRegAddress(const mbMap_st* p_map, uint16_t index);
+extern uint16_t mbMap_getStructSize(const mbMap_st* p_map, uint16_t index);
+extern uint16_t mbMap_lookup(uint16_t reg_address);
+
+
+extern CoeffT* Coeff_getObj(const mbMap_st* p_map, uint16_t reg_address);
 
 #endif /* MB_MAPPER_H_ */

@@ -1,18 +1,10 @@
-/*
- ============================================================================
- Name        : example_offsetof.c
- Author      :
- Version     :
- Copyright   : Your copyright notice
- Description : Hello World in C, Ansi-style
- ============================================================================
- */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
 
 #include "mbMap_typedef.h"
+#include "mbData_typedef.h"
 #include "mbMapper.h"
 
 static inline void _writeStruct_CoeffT(CoeffT* p_obj)

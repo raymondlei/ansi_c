@@ -1,7 +1,6 @@
 #include <stdint.h>
 
 #include "mbMap_typedef.h"
-#include "mbMapper.h"
 
 /*
  * -----------------------------------------------------------------------------

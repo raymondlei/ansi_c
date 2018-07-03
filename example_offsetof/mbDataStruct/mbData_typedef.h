@@ -56,4 +56,19 @@ typedef struct
     uint16_t processor_upTime;  //MCU uptime in hours
 }TimingT;
 
+extern CoeffT tankThermisterCoeff, probeCoeff;
+extern FirmwareInfoT firmwareInfo;
+extern MeasurementT measurement;
+extern ProductInfoT dispenser;
+extern StatusT appStatus;
+extern TimingT appUpTime;
+
+
+extern CoeffT* Coeff_getObj(uint16_t reg_address);
+extern FirmwareInfoT* FirmwareInfo_getObj(uint16_t reg_address);
+extern MeasurementT* Measurement_getObj(uint16_t reg_address);
+extern ProductInfoT* ProductInfo_getObj(uint16_t reg_address);
+extern StatusT* Status_getObj(uint16_t reg_address);
+extern TimingT* Timing_getObj(uint16_t reg_address);
+
 #endif /* MBDATA_TYPEDEF_H_ */

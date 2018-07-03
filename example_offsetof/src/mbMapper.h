@@ -2,16 +2,11 @@
 #ifndef MB_MAPPER_H_
 #define MB_MAPPER_H_
 
-#include "modbus_datatypes.h"
+#include <stdint.h>
+#include "mbMap_typedef.h"
+#include "mbData_typedef.h"
 
-typedef struct
-{
-    uint16_t reg_address;
-    uint8_t struct_size;
-    void* pDataStruct;
-}mbMap_st;
-
-extern CoeffT tankThermister, probe;
+extern CoeffT tankThermisterCoeff, probeCoeff;
 extern FirmwareInfoT firmwareInfo;
 extern MeasurementT measurement;
 extern ProductInfoT dispenser;
@@ -26,9 +21,6 @@ extern const uint16_t mbMap_size;
 extern void* mbMap_getObj(const mbMap_st* p_map, uint16_t index);
 extern uint16_t mbMap_getRegAddress(const mbMap_st* p_map, uint16_t index);
 extern uint16_t mbMap_getStructSize(const mbMap_st* p_map, uint16_t index);
-extern uint16_t mbMap_lookup(uint16_t reg_address);
-
-
-extern CoeffT* Coeff_getObj(const mbMap_st* p_map, uint16_t reg_address);
+extern uint16_t mbMap_lookup(const mbMap_st* p_map, uint16_t map_size, uint16_t reg_address);
 
 #endif /* MB_MAPPER_H_ */

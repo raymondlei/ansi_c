@@ -1,7 +1,7 @@
 /*
  ============================================================================
  Name        : example_offsetof.c
- Author      : 
+ Author      :
  Version     :
  Copyright   : Your copyright notice
  Description : Hello World in C, Ansi-style
@@ -12,7 +12,7 @@
 #include <stdlib.h>
 #include <stddef.h>
 
-#include "modbus_datatypes.h"
+#include "mbMap_typedef.h"
 #include "mbMapper.h"
 
 static inline void _writeStruct_CoeffT(CoeffT* p_obj)
@@ -41,9 +41,7 @@ static inline void TraverseMap(void)
     {
         printf("Reg Address = 0x%x\n", mbMap_getRegAddress(pMap, idx));
     }
-
 }
-
 
 
 int main(void)
@@ -54,19 +52,19 @@ int main(void)
 
     TraverseMap();
 
-    pObj = Coeff_getObj(pMap, 0x1240);
+    pObj = Coeff_getObj(0x1240);
     DisplayCoeff(pObj);
 
     _writeStruct_CoeffT(pObj);
 
-    pObj = Coeff_getObj(pMap, 0x1243);
+    pObj = Coeff_getObj(0x1243);
     DisplayCoeff(pObj);
 
-    index = mbMap_lookup(0x1243);
+    index = mbMap_lookup(pMap, mbMap_size, 0x1243);
     pObj = (CoeffT*) mbMap_getObj(pMap, index);
     DisplayCoeff(pObj);
 
-    pObj = Coeff_getObj(pMap, 0x1200);
+    pObj = Coeff_getObj(0x1200);
     DisplayCoeff(pObj);
 
 

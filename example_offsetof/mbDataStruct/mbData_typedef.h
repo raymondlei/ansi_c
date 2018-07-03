@@ -2,6 +2,7 @@
 #define MBDATA_TYPEDEF_H_
 
 #include <stdint.h>
+#include "mbMap_typedef.h"
 
 #define SIZEOF(s, m)  ((size_t) sizeof(((s *)0)->m))
 
@@ -63,6 +64,8 @@ extern ProductInfoT dispenser;
 extern StatusT appStatus;
 extern TimingT appUpTime;
 
+extern const mbMap_st* mbMap_getHandle(void);
+extern uint16_t mbMap_getSize(void);
 
 extern CoeffT* Coeff_getObj(uint16_t reg_address);
 extern FirmwareInfoT* FirmwareInfo_getObj(uint16_t reg_address);

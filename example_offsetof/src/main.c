@@ -32,38 +32,26 @@ static inline void DisplayCoeff(CoeffT* p_obj)
     printf("Data = %f\n", p_obj->coeffC);
 }
 
-static inline void TraverseMap(void)
-{
-    const mbMap_st* pMap = mbMap_getHandle();
-    uint8_t idx = 0;
-    uint16_t size = mbMap_getSize();
-
-    for(idx = 0; idx < size; idx++)
-    {
-        printf("Reg Address = 0x%x\n", mbMap_getRegAddress(pMap, idx));
-    }
-}
-
-
 int main(void)
 {
     const mbMap_st* pMap = mbMap_getHandle();
+    uint16_t size = mbMap_getSize();
+
     CoeffT* pObj;
     uint16_t index = 0;
     DataObj_enum data_type;
-    uint16_t size = mbMap_getSize();
+
+    mbMap_showMember();
+
+    pObj = Coeff_getObj(0x1243);
+    DisplayCoeff(pObj);
+
+    _writeStruct_CoeffT(pObj);
+
+    pObj = Coeff_getObj(0x1240);
+    DisplayCoeff(pObj);
 
 
-//    TraverseMap();
-//
-//    pObj = Coeff_getObj(0x1240);
-//    DisplayCoeff(pObj);
-//
-//    _writeStruct_CoeffT(pObj);
-//
-//    pObj = Coeff_getObj(0x1243);
-//    DisplayCoeff(pObj);
-//
 //    data_type = mbMap_lookupDataType(pMap, size, 0x1243);
 //    pObj = (CoeffT*) mbMap_getObj(pMap, index);
 //    DisplayCoeff(pObj);

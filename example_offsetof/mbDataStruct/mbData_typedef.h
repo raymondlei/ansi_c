@@ -67,11 +67,19 @@ extern TimingT appUpTime;
 extern const mbMap_st* mbMap_getHandle(void);
 extern uint16_t mbMap_getSize(void);
 
+extern const mbObjMap_st* mbObjectMap_getHandle(void);
+extern uint16_t mbObjectMap_getSize(void);
+extern const mbFieldMap_getHandle(void);
+extern uint16_t mbFieldMap_getSize(void);
+
 extern CoeffT* Coeff_getObj(uint16_t reg_address);
 extern FirmwareInfoT* FirmwareInfo_getObj(uint16_t reg_address);
 extern MeasurementT* Measurement_getObj(uint16_t reg_address);
 extern ProductInfoT* ProductInfo_getObj(uint16_t reg_address);
 extern StatusT* Status_getObj(uint16_t reg_address);
 extern TimingT* Timing_getObj(uint16_t reg_address);
+
+
+extern void mbMap_showMember(void);
 
 #endif /* MBDATA_TYPEDEF_H_ */

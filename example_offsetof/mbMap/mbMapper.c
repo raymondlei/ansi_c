@@ -42,6 +42,22 @@ DataObj_enum mbMap_lookupDataType(const mbMap_st* p_map, uint16_t map_size, uint
     return (p_map + idx)->data_obj;
 }
 
+uint16_t mbMap_lookupBaseAddress(const mbMap_st* p_map, uint16_t map_size, DataObj_enum data_type)
+{
+    uint16_t idx;
+
+    for(idx = 0; idx < map_size; idx++)
+    {
+        if((p_map + idx)->data_obj == data_type)
+            break;
+    }
+
+    if(idx < map_size)
+        return (p_map + idx)->reg_address;
+    else
+        return 0;
+}
+
 uint16_t mbMap_lookupObj(const mbObjMap_st* pObj_map, uint16_t map_size, DataObj_enum key)
 {
     uint16_t idx;

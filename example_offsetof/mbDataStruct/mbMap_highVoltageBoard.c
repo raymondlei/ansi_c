@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdint.h>
 #include <stddef.h>
 
@@ -110,6 +111,45 @@ uint16_t mbMap_getSize(void)
     return mbMap_size;
 }
 
+const mbObjMap_st* mbObjectMap_getHandle(void)
+{
+    return &mbObject[0];
+}
+
+uint16_t mbObjectMap_getSize(void)
+{
+    return mbObjMap_size;
+}
+
+const mbFieldMap_getHandle(void)
+{
+    return &mbFieldMap[0];
+}
+
+uint16_t mbFieldMap_getSize(void)
+{
+    return mbFieldMap_size;
+}
+
+void mbMap_showMember(void)
+{
+    uint16_t idx = 0;
+    DataObj_enum obj = mbFieldMap[idx].data_obj;
+    uint16_t base_address = mbMap_lookupBaseAddress(&mbMap[0], mbMap_size, obj);
+
+    for(idx = 0; idx < mbFieldMap_size; idx++)
+    {
+        if(obj != mbFieldMap[idx].data_obj)
+        {
+            obj = mbFieldMap[idx].data_obj;
+            base_address = mbMap_lookupBaseAddress(&mbMap[0], mbMap_size, obj);
+            printf("\n");
+        }
+
+        printf("[%d] member: 0x%x\n", mbFieldMap[idx].data_obj, base_address + mbFieldMap[idx].offset);
+    }
+}
+
 CoeffT* Coeff_getObj(uint16_t reg_address)
 {
     return (CoeffT*) _getObj(reg_address);
@@ -148,7 +188,10 @@ TimingT* Timing_getObj(uint16_t reg_address)
 static inline void* _getObj(uint16_t reg_address)
 {
     DataObj_enum data_type = mbMap_lookupDataType(&mbMap[0], mbMap_size, reg_address);
+//    printf("DataObj = %d\n", data_type);
+
     uint16_t idx = mbMap_lookupObj(&mbObject[0], mbObjMap_size, data_type);
+//    printf("idx = %d\n", idx);
 
     return mbMap_getObj(&mbObject[0], idx);
 }

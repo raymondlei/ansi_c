@@ -24,11 +24,11 @@
  ============================================================================
  */
 
-#include <stdio.h>    //for puts, printf
-#include <stdlib.h>   //for EXIT_SUCCESS
+#include <stdio.h>   //for puts, printf
+#include <stdlib.h>  //for EXIT_SUCCESS
 
-int main(void)
+int main()
 {
-	puts("Hello World"); /* prints Hello World */
-	return EXIT_SUCCESS;
+    puts("Hello World"); /* prints Hello World */
+    return EXIT_SUCCESS;
 }
